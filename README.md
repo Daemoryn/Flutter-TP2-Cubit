@@ -1,1 +1,3 @@
-# Flutter-TP2-Cubit
+# Quiz
+
+Quiz with Cubit and BLoC
