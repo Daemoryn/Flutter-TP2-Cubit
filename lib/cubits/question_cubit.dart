@@ -1,5 +1,5 @@
-import 'package:quiz/models/emit_data.dart';
-import 'package:quiz/widgets/question.dart';
+import 'package:flutter_firebase/models/emit_data.dart';
+import 'package:flutter_firebase/widgets/question.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

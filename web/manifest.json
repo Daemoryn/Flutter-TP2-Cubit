@@ -1,11 +1,11 @@
 {
-    "name": "quizz",
-    "short_name": "quizz",
+    "name": "flutter_firebase",
+    "short_name": "flutter_firebase",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A new Flutter with Firebase.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
