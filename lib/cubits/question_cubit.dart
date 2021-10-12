@@ -40,10 +40,19 @@ class QuestionCubit extends Cubit<EmitData<Question, int, int, int, int>> {
       text = 'Ce n\'est pas la bonne réponse :/';
       flag = false;
     }
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content:
-            Center(child: Text(text, style: const TextStyle(fontSize: 20))),
-        duration: const Duration(milliseconds: 1000)));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          text,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: MediaQuery.of(context).size.width * 0.08,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        duration: const Duration(milliseconds: 1500),
+      ),
+    );
 
     nextQuestion(flag, context);
   }
@@ -55,12 +64,21 @@ class QuestionCubit extends Cubit<EmitData<Question, int, int, int, int>> {
     if (index < questions.length - 1) {
       _index++;
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
           content: Center(
-              child: Text(
-                  "C'est la fin du Quiz, vous avez un score de : $score !",
-                  style: const TextStyle(fontSize: 20))),
-          duration: const Duration(milliseconds: 1000)));
+            child: Text(
+              "Score : $score, vous pouvez tenter de l'améliorer :)",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: MediaQuery.of(context).size.width * 0.08,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          duration: const Duration(milliseconds: 3000),
+        ),
+      );
 
       retry();
     }
@@ -75,7 +93,8 @@ class QuestionCubit extends Cubit<EmitData<Question, int, int, int, int>> {
   }
 
   void _sendQuestion() {
-    emit(EmitData(_questions[_index], _score, _index, _tentatives, _scorePrecedent));
+    emit(EmitData(
+        _questions[_index], _score, _index, _tentatives, _scorePrecedent));
   }
 
   get score => _score;

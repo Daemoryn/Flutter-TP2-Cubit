@@ -8,11 +8,12 @@ class Choix extends StatelessWidget {
   Color onPrimary;
   Function() function;
 
-  Choix({required this.text,
-    this.fontSize = 50,
-    required this.primary,
-    this.onPrimary = Colors.black,
-    required this.function});
+  Choix(
+      {required this.text,
+      this.fontSize = 50,
+      required this.primary,
+      this.onPrimary = Colors.black,
+      required this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,11 @@ class Choix extends StatelessWidget {
       onPressed: function,
       child: Text(
         text,
-        style: TextStyle(fontSize: fontSize),
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: MediaQuery.of(context).size.width * 0.10,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

@@ -10,22 +10,24 @@ class Score extends StatelessWidget {
   double? textFontSize;
   Color? textColor;
 
-  Score({required this.text,
-    this.number = 0,
-    this.colorBackground = Colors.black87,
-    this.padding = const EdgeInsets.all(20.0),
-    this.textFontSize = 20.0,
-    this.textColor = Colors.white});
+  Score(
+      {required this.text,
+      this.number = 0,
+      this.colorBackground = Colors.black87,
+      this.padding = const EdgeInsets.all(10.0),
+      this.textFontSize = 20.0,
+      this.textColor = Colors.white});
 
   @override
   Widget build(BuildContext context) {
     return FadeInDown(
-        child: Container(
-          margin: const EdgeInsets.only(top: 10.0),
-          child: Text(text + number.toString(),
-              style: TextStyle(fontSize: textFontSize, color: textColor)),
-          color: colorBackground,
-          padding: padding,
-        ));
+      child: Container(
+        margin: const EdgeInsets.only(top: 10.0),
+        child: Text(text + number.toString(),
+            style: TextStyle(fontSize: textFontSize, color: textColor)),
+        color: colorBackground,
+        padding: padding,
+      ),
+    );
   }
 }
