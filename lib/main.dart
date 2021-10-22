@@ -6,46 +6,45 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/widgets/choix.dart';
 import 'package:flutter_firebase/widgets/question.dart';
 import 'package:flutter_firebase/widgets/score.dart';
-import 'dart:ui' as ui;
 
 import 'cubits/question_cubit.dart';
 import 'models/emit_data.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MediaQuery(
-      data: MediaQueryData.fromWindow(ui.window),
-      child: Directionality(textDirection: TextDirection.rtl, child: Quiz())));
+  // WidgetsFlutterBinding.ensureInitialized();
+  runApp(const Quiz());
 }
 
 class Quiz extends StatefulWidget {
+  const Quiz({Key? key}) : super(key: key);
+
   @override
   _QuizState createState() => _QuizState();
 }
 
 class _QuizState extends State<Quiz> {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-  FirebaseFirestore db = FirebaseFirestore.instance;
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  // final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  // FirebaseFirestore db = FirebaseFirestore.instance;
+  // CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  Future<void> getData() async {
-    // Get docs from collection reference
-    QuerySnapshot querySnapshot = await users.get();
+  // Future<void> getData() async {
+  //   // Get docs from collection reference
+  //   QuerySnapshot querySnapshot = await users.get();
+  //
+  //   // Get data from docs and convert map to List
+  //   final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+  //
+  //   print(allData);
+  // }
 
-    // Get data from docs and convert map to List
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-
-    print(allData);
-  }
-
-  DocumentReference alovelaceDocumentRef =
-      FirebaseFirestore.instance.collection("users").doc("alovelace");
+  // DocumentReference alovelaceDocumentRef =
+  //     FirebaseFirestore.instance.collection("users").doc("alovelace");
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       // Initialize FlutterFire:
-      future: _initialization,
+      // future: _initialization,
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
@@ -55,6 +54,10 @@ class _QuizState extends State<Quiz> {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             title: 'Questions/Réponses',
+            // theme: ThemeData(
+            //   primarySwatch: Colors.blue,
+            //   visualDensity: VisualDensity.adaptivePlatformDensity,
+            // ),
             debugShowCheckedModeBanner: false,
             home: BlocProvider(
               create: (_) => QuestionCubit(),
